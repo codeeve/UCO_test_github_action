@@ -1,0 +1,27 @@
+#nama action
+name: Kasmir Test
+
+#trigger
+on:
+  push:
+    branches:
+      - main
+
+#jobs
+jobs:
+  build:
+    #where? runner
+    runs-on: macos-latest
+    #what? job
+    steps:
+      - name: Checkout repo dulu gan!
+        uses: actions/checkout@v4
+
+      - name: setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter test --coverage
