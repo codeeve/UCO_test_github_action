@@ -26,12 +26,11 @@ jobs:
       - run: flutter pub get
       - run: flutter test --coverage
 
-      - name: build apk
-        run: flutter build apk --release
+      #   - name: build apk
+      #     run: flutter build apk --release
 
-      - name: upload artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: apk-v1.apk
-          #path ke apk yang dihasilkan
-          path: build/app/outputs/flutter-apk/app-release.apk
+      #   - name: build macos
+      #     run: flutter build macos --release
+
+      - name: build ios
+        run: flutter build ios --release --no-codesign
